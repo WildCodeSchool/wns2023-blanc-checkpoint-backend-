@@ -7,13 +7,16 @@ import { CountryResolver } from "./resolvers/country.resolver";
 
 
 const start = async () => {
-  dataSource.initialize();
+  await dataSource.initialize();
+
   const schema = await buildSchema({
     resolvers: [CountryResolver],
      validate: { forbidUnknownValues: false },
   });
 
-  const server = new ApolloServer({ schema });
+  const server = new ApolloServer({ 
+    schema,
+   });
   const { url } = await startStandaloneServer(server, {
     listen: { port: 4000 },
   });
