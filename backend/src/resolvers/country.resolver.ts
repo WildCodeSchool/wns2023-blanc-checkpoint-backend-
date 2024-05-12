@@ -30,7 +30,7 @@ export class CountryResolver {
   async getCountryByCode(
     @Arg('code') code: string
   ): Promise<Country | null> {
-    return Country.findOne({ where: { code } });
+    return Country.findOneByOrFail({ code });
   }
 
   @Query(() => [Country])

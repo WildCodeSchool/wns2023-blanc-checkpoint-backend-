@@ -24,6 +24,6 @@ export class Country extends BaseEntity {
   emoji: string;
   
   @Field()
-  @Column()
+  @Column({ length: 25 })
   continent: string;
 }
